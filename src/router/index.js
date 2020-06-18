@@ -1,27 +1,62 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Home from "../views/Users.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "Users",
     component: Home
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: "/users",
+    name: "Users",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+      import(/* webpackChunkName: "Users" */ "../views/Users.vue")
+  },
+  {
+    path: "/user/:id",
+    name: "User",
+    component: () =>
+      import(/* webpackChunkName: "User" */ "../views/User.vue")
+  
+  },
+  {
+    path: "/roles",
+    name: "Roles",
+    component: () =>
+      import(/* webpackChunkName: "Roles" */ "../views/Roles.vue")
+  },
+  {
+    path: "/privileges",
+    name: "Privileges",
+    component: () =>
+      import(/* webpackChunkName: "Privileges" */ "../views/Privileges.vue")
+  },
+  {
+    path: "/adduser",
+    name: "AddUser",
+    component: () =>
+      import(/* webpackChunkName: "AddUser" */ "../components/AddUser.vue") 
+  },
+  {
+    path: "/addrole",
+    name: "AddRole",
+    component: () =>
+      import(/* webpackChunkName: "AddRole" */ "../components/AddRole.vue") 
+  },
+  {
+    path: "/addprivilege",
+    name: "AddPrivilege",
+    component: () =>
+      import(/* webpackChunkName: "AddUser" */ "../components/AddPrivilege.vue") 
   }
 ];
 
 const router = new VueRouter({
+  mode: "history",
   routes
 });
 
